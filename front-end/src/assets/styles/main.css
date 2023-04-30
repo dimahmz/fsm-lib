@@ -1,0 +1,49 @@
+@import url("./fonts/fonts.css");
+
+:root {
+  /* colors */
+  --blue-color: #2366b5;
+  --white-color: #fafbfd;
+  --green-color: #09ae07;
+  --gray-color: #ccc7c7;
+  --black-color: #121212;
+
+  /* --blur-bg-colors: */
+  --app-blur-bg: linear-gradient(
+    -20deg,
+    var(--app-primary-color) 0%,
+    var(--app-secondary-color) 100%
+  );
+
+  /* app box-shadows */
+  --app-shadow-simple: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  /* app border colors */
+  --app-primary-border-color: #d8dde3;
+
+  /* app bg-colors */
+  --app-primary-color: #2366b5;
+  --app-secondary-color: #ccc7c7;
+  --app-tertiary-color: #fafbfd;
+
+  /* fonts */
+
+  /* colors */
+  --big-fonts-color: #121212;
+  --meduim-fonts-color: #262e36;
+  --small-fonts-color: #4c5c6b;
+
+  /* family */
+  --big-fonts-family: "Roboto";
+  --meduim-fonts-family: "Roboto";
+  --small-fonts-family: "Roboto";
+}
+
+/* gloabl elements styles */
+body {
+  background-color: var(--app-white-color);
+  /* font-family: var(--meduim-fonts-family); */
+}
+#root {
+  @apply text-center flex-center;
+}
