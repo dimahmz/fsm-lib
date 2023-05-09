@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Detail</title>
+</head>
+<body>
+    {% include 'sidebar.html' %}
+
+    <div id="main">
+        <h1>Book Detail</h1>
+
+        <a href="{% url 'books' %}">Return to books</a>
+
+        <img src="{{ book.cover_image_url }}" alt="Book cover">
+
+        <div id="book-info">
+            <p>Title: {{ book.title }}</p>
+            <p>Author: {{ book.author }}</p>
+            <p>Type: {{ book.book_type }}</p>
+            <p>Publisher: {{ book.publisher }}</p>
+            <p>ISBN/ISSN: {{ book.isbn_issn }}</p>
+            <p>Format: {{ book.format }}</p>
+            <p>Language: {{ book.language }}</p>
+        </div>
+
+        <button>Borrow to student</button>
+        <button>Delete</button>
+        <button>Received</button>
+    </div> 
+</body> 
+</html>  

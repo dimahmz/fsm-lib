@@ -53,4 +53,9 @@ body {
 
 #root input {
   @apply border-2 border-black border-solid;
+  background-color: var(--app-white-color);
+  /* font-family: var(--meduim-fonts-family); */
+}
+#root {
+  @apply text-center flex-center;
 }
