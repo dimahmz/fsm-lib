@@ -41,9 +41,16 @@
 
 /* gloabl elements styles */
 body {
+  margin: 0;
+  padding: 0;
   background-color: var(--app-white-color);
   /* font-family: var(--meduim-fonts-family); */
 }
+
 #root {
-  @apply text-center flex-center;
+  @apply text-center;
+}
+
+#root input {
+  @apply border-2 border-black border-solid;
 }
