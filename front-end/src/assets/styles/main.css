@@ -3,7 +3,8 @@
 :root {
   /* colors */
   --blue-color: #2366b5;
-  --white-color: #fafbfd;
+  --white-color--100: hsl(220, 43%, 99%);
+  --white-color--200: hsl(220, 30%, 88%);
   --green-color: #09ae07;
   --gray-color: #ccc7c7;
   --black-color: #121212;
@@ -44,18 +45,52 @@ body {
   margin: 0;
   padding: 0;
   background-color: var(--app-white-color);
+  /* height: 100vh; */
   /* font-family: var(--meduim-fonts-family); */
 }
 
 #root {
-  @apply text-center;
+  /* height: 100vh; */
+
+  /* @apply text-center; */
 }
 
-#root input {
+/* #root input {
   @apply border-2 border-black border-solid;
   background-color: var(--app-white-color);
-  /* font-family: var(--meduim-fonts-family); */
+  font-family: var(--meduim-fonts-family);
+} */
+.app-input {
+  border-radius: 4px;
+  padding-left: 12px;
+  font-size: 14px;
+  font-weight: normal;
+  border: 1px solid rgb(137, 151, 155);
+  transition: border-color 150ms ease-in-out 0s;
+  outline: none;
+  color: rgb(33, 49, 60);
+  background-color: rgb(255, 255, 255);
+  padding-right: 12px;
 }
-#root {
-  @apply text-center flex-center;
+
+.select-menu {
+  text-align: center;
+  appearance: none;
+  outline: 0;
+  background-image: none;
+  color: black;
+  cursor: pointer;
+  border: 1px solid rgb(137, 151, 155);
+  border-radius: 3px;
+}
+
+.select-menu select {
+  text-align: start;
+  position: relative;
+  background-color: rgb(255, 255, 255);
+  display: block;
+  line-height: 3;
+  overflow: hidden;
+  border-radius: 0.25em;
+  padding-bottom: 10px;
 }

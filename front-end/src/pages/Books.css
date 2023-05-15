@@ -1,0 +1,16 @@
+.bookLink:nth-child(odd) {
+  background-color: var(--white-color--100);
+}
+
+.bookLink:nth-child(even) {
+  background-color: var(--white-color--200);
+}
+
+.bookLink:hover {
+  @apply cursor-pointer opacity-80;
+}
+
+#books-table {
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
+    rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+}

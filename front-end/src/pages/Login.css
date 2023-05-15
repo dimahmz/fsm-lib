@@ -1,3 +1,53 @@
 /* svg {
   @apply bg-primary;
 } */
+.form-container {
+  max-width: 400px;
+  margin: 10px auto;
+  padding: 20px 12px;
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px,
+    rgba(17, 17, 26, 0.1) 0px 0px 8px;
+  top: 100px;
+  left: 0;
+  right: 0;
+  position: absolute;
+}
+
+.input-container {
+  position: relative;
+  margin-bottom: 35px;
+}
+.input-container label {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  font-size: 14px;
+  pointer-event: none;
+  transition: all 0.5s ease-in-out;
+}
+.input-container input {
+  margin-top: 18px;
+  border: 0;
+  border-bottom: 1px solid #555;
+  background: transparent;
+  width: 100%;
+  padding: 8px 0 5px 0;
+  font-size: 16px;
+}
+.input-container input:focus {
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #4df471;
+}
+.input-container input:focus ~ label {
+  top: -5px;
+  font-size: 12px;
+}
+/* .input-container input:valid ~ label { */
+
+.login-btn {
+  padding: 10px auto;
+  width: 100%;
+  background-color: var(--app-primary-color);
+  color: #fff;
+}

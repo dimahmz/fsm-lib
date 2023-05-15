@@ -1,6 +1,17 @@
+/* active links styles */
 .active {
-  @apply bg-white px-2 py-3;
+  @apply relative bg-white py-3;
   color: var(--app-primary-color);
+}
+.active::after {
+  position: absolute;
+  z-index: 10;
+  content: "";
+  inset: 0;
+  left: calc(100% - 8px);
+  width: 8px;
+  height: 100%;
+  background-color: var(--green-color);
 }
 .active svg path {
   fill: var(--app-primary-color);
@@ -8,6 +19,15 @@
 
 svg {
   @apply m-0 p-0;
+}
+
+/* log out button style  */
+.logout-btn {
+  @apply bg-white text-white rounded-md py-2 px-3;
+  color: var(--app-primary-color);
+}
+.logout-btn svg path {
+  stroke: var(--app-primary-color);
 }
 
 /* app loading style */

@@ -1,10 +1,22 @@
+import { RouterProvider , useLocation} from 'react-router-dom'
+import router  from './pages/routes.jsx'
+import { useEffect, useState } from 'react'
+import Loading from './components/Loading'
+import './assets/styles/main.css'
 import './index.css'
+
 function App() {
+  // const auth = sessionStorage.getItem("authenticated")
+  // const [loading, setLoading] = useState(true)
+
+  // useEffect(() => {
+  //     setLoading(false);
+  // }, [auth]);  
   return (
     <>
-    <h1 className='bg-primary text-primary app-font'>fsm-lib</h1>
+      {/* { loading && <Loading/> } */}
+        <RouterProvider router={router} />
     </>
   )
 }
-
 export default App

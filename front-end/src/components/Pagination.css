@@ -1,0 +1,13 @@
+.page-number-btn {
+  @apply px-3 py-2 border border-gray-400;
+}
+.previous-page-btn {
+  @apply bg-slate-200 px-1 py-2 border border-gray-400;
+}
+.next-page-btn {
+  @apply border border-gray-400 px-1 py-2;
+}
+.activeBtn {
+  background-color: var(--app-primary-color);
+  @apply text-white;
+}

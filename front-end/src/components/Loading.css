@@ -9,11 +9,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 100;
 }
 
 .full-loading-bg .loader {
   position: relative;
-  z-index: 100;
+  z-index: 200;
   border: 6px solid #f3f3f3;
   border-radius: 50%;
   border-top: 6px solid #3498db;

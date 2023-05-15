@@ -1,6 +1,5 @@
-import {  useState } from 'react'
 import { useLoaderData, useActionData, Form , redirect , useNavigation } from 'react-router-dom'
-import { setCookie , getCookie , removeCookie } from '../hooks/AppCookies'
+import { setCookie , getCookie  } from '../hooks/AppCookies'
 import { fakeAuth } from '../../API'
 import './Login.css'
 
@@ -12,18 +11,34 @@ export const Login = () => {
 
   return (
     <>
-    {message && <h2 className="text-red-500">{message}</h2>}
-    {error && <h2 className="text-red-600">{error}</h2>}
-    <h2>Login</h2>
-    <Form method='post' replace> 
-      <label> email : </label><br />
-      <input   name="email" placeholder='john@00.domain.com'/><br/>
-      <label>Password : </label><br/>
-      <input type="password" name="password" placeholder='*****'/><br/>
-      <button disabled={navigation.state === "submitting"}>
-          {navigation.state === "submitting" ? "Logging in..." : "Log in"}
-        </button>
-    </Form>
+      <div className='text-center mt-16'>
+        {(message && !error) && <h2 className="text-red-500">{message}</h2>}
+        {error && <h2 className="text-red-600">{error}</h2>} 
+      </div>
+      <section className='form-container'>
+        <header className='text-center'>
+          <h1 className='text-2xl mb-4'>Library System</h1>
+          <p className='text-gray mb-4'>log to your account</p>
+        </header>
+        <Form className='flex-center mt-5' method='post' replace> 
+          <div>
+            <div className="input-container">
+              <input   name="email"/>
+              <label>Enter email : </label>
+            </div>
+            <div className="input-container">
+              <input type="password" name="password" />
+              <label>Enter password : </label>
+            </div>
+            <div className='flex-center mt-4'>
+              <button className='login-btn py-2 rounded-md' disabled={navigation.state === "submitting"}>
+                {navigation.state === "submitting" ? "Logging in..." : "Log in"}
+              </button>
+            </div>
+          </div>
+        </Form>
+      </section>
+      <footer className='bg-primary h-20 absolute inset-x-0 bottom-0 w-full'></footer>
     </>
   )
 }
