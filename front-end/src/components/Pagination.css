@@ -11,3 +11,8 @@
   background-color: var(--app-primary-color);
   @apply text-white;
 }
+
+.hidePagination {
+  display: none;
+  visibility: hidden;
+}

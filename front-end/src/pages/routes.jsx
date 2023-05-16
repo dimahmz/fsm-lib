@@ -19,7 +19,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     action={rootAction}>
     <Route index 
       element={<Dashboard />}     
-      loader={async () => {await sleep(0); return null}}
+      loader={async () => {await sleep(1000); return null}}
     />
     <Route 
       path="books" 
@@ -55,7 +55,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route 
       path="students"
       element={<Students />} 
-      loader={async () => {await sleep(0); return null}} 
+      loader={async () => {await sleep(1000); return null}} 
     />
   </Route>
   <Route

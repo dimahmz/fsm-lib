@@ -28,3 +28,7 @@
 .add-book-form input:hover {
   box-shadow: rgb(231 238 236) 0px 0px 0px 3px;
 }
+
+.add-book-form label {
+  margin-bottom: 10px;
+}

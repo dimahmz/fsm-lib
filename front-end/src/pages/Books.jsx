@@ -1,4 +1,4 @@
-import { useLoaderData , useParams, Form, NavLink} from "react-router-dom"
+import { useLoaderData , useSearchParams , useParams, Form, NavLink} from "react-router-dom"
 import { ReactComponent as SearchIcon } from "../assets/icons/search.svg"
 import { fakeBooks } from "../../API"
 import { getCookie } from "../hooks/AppCookies" 
@@ -9,27 +9,36 @@ import Line from "../components/Line"
 import  { ReactComponent as PlusIcon }  from '../assets/icons/plus.svg'
 import './Books.css'
 
-export async function booksLoader(){
-  try{
-    const response = await fakeBooks(getCookie('token'))
-    return response
-  }
-  catch(e) {
-    return e
-  }
+export async function booksLoader({request , params}){
+
+  // const page = new URL(request.url).searchParams.get('page') 
+  // const {title , type } = params
+  // console.log(params, page, type , title)
+  // console.log(params)
+  
+
+  // try{
+  //   const response = await fakeBooks(getCookie('token'))
+  //   return response
+  // }
+  // catch(e) {
+  //   return e
+  // }
+  return [null]
 }
 
 export function Books() {
 
-  const { page }= useParams()
+  const page = Number (new URL(location.href ).searchParams.get('page'))
+  
   const data =  useLoaderData()
-  console.log(data)
+
   return (
     <>
-      <Form>
+      <Form method='post' >
         <div className="flex items-center justify-around mt-6">
           <div className="select-menu">
-            <select className="py-2 px-3 " name="book-type">
+            <select className="py-2 px-3 " name="type">
               <option value="a">aaaaaa</option>
               <option value="b">bbbbbb</option>
               <option value="b">cccccc</option>
@@ -37,9 +46,9 @@ export function Books() {
             </select>
           </div>
           <div className="flex-center space-x-2">
-            <label htmlFor="search-input" hidden>search input</label>
-            <input type="text" className="app-input h-8 w-72" name="search-input" />
-            <button className="p-2 bg-primary"> <SearchIcon /> </button>
+            <label htmlFor="title" hidden>search input</label>
+            <input type="text" className="app-input h-8 w-72" name="title" />
+            <button className="p-2 bg-primary" type="submit"> <SearchIcon /> </button>
           </div>
         </div>
       </Form>
@@ -77,7 +86,7 @@ export function Books() {
       { 
        data.success && 
         <footer className="mt-10">  
-          <Pagination length={data.books.length} page={page} />
+          <Pagination length={data.books.length} page={page} pages={12} />
         </footer>
       }
     </>

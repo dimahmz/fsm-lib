@@ -45,22 +45,22 @@ export default function BackBtn({ onClose , action}){
         <CloseIcon className='relative z-10 p-0 m-0' onClick={closeModal} />
       </header>
         <Form method='post' action={action}>
-          <div className='modal-form flex flex-col space-y-3 py-5 bg-gray-50'> 
+          <div className='modal-form flex flex-col space-y-3 py-5 px-2 rounded-lg bg-gray-50'> 
             <div>
               <label htmlFor='StdudentID'>ID </label>
-              <input type='text' name='ID' />
+              <input className='app-input' type='text' name='ID' />
             </div>
             <div>
               <label htmlFor='StdudentID'> first name </label>
-              <input type='text' name='firstName' /> 
+              <input  className='app-input'  type='text' name='firstName' /> 
             </div>
             <div>
               <label htmlFor='StdudentID'>last name </label>
-              <input type='text' name='lastName' /> 
+              <input  className='app-input'  type='text' name='lastName' /> 
             </div>
             <div>
               <label htmlFor='StdudentID'>Branch</label>
-              <input type='text' name='branch' />
+              <input  className='app-input'  type='text' name='branch' />
             </div>
           </div>
           <div className='mt-5 flex justify-end'>

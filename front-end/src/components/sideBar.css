@@ -1,9 +1,9 @@
 /* active links styles */
-.active {
+.activePage {
   @apply relative bg-white py-3;
   color: var(--app-primary-color);
 }
-.active::after {
+.activePage::after {
   position: absolute;
   z-index: 10;
   content: "";
@@ -13,7 +13,7 @@
   height: 100%;
   background-color: var(--green-color);
 }
-.active svg path {
+.activePage svg path {
   fill: var(--app-primary-color);
 }
 

@@ -6,12 +6,14 @@ import './AddBook.css'
 
 export default function AddBook(){
   return(
-    <div className="mb-16">
-      <BackBtn />
-      <h1 className='m-10'>Add  a book </h1>
+    <>
+      {/* <div>
+        <BackBtn />
+      </div> */}
+      <h1 className='m-10 font-semibold text-xl text-center'>Add  a book </h1>
       <Line/>
-      <Form method="post">
-        <div className='add-book-form'>
+      <Form className="inline-block pb-10" method="get">
+        <div className='add-book-form ml-28 mt-5 '>
           <div>
             <label htmlFor="title"> title</label>
             <input type='text' name='title' />
@@ -45,6 +47,6 @@ export default function AddBook(){
             <Button text='Add' type="submit" />
           </div>
       </Form>
-    </div>
+    </>
   )
 }

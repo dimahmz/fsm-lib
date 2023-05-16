@@ -1,4 +1,4 @@
-import { useParams , useActionData , useNavigation, redirect } from 'react-router-dom'
+import { useParams , useNavigation, redirect } from 'react-router-dom'
 import BackBtn from '../components/BackBtn'
 import Line from '../components/Line'
 import Button from '../components/AppButton'
@@ -13,12 +13,8 @@ import { fakeBookBorrow } from '../../API'
 import Loading from '../components/Loading'
 import SLEEP from '../sleep.js'
 
-// import MessageModal from '../components/MessageModel'
-
 
 export default function OneBook() {
-
-  // const response = useActionData()
   
   const navigation = useNavigation()
   
@@ -39,28 +35,29 @@ export default function OneBook() {
 
   return (
     <>
-      <span className="mt-3">
+      <span className="inline-block m-8">
         <BackBtn />
       </span>
-      <h1 className="my-10">book&rsquo;s id is {id}</h1>
-      <Line className="my-4"/>
+      <div className="my-6">
+        <Line />
+      </div>
       <div className="flex justify-evenly">
         <span onClick={() => toggeleModal(0)}>
           <Button 
             icon={<SendFileIcon/>}
-            text="Borrow to a student"
+            text="Borrow book"
           />
         </span>
         <span onClick={() => toggeleModal(0)}>
           <Button
             icon={<GetFileIcon/>} 
-            text="received"
+            text="Receive student"
           />
         </span>
         <span onClick={() => toggeleModal(2)}>
           <Button 
             icon={<DeleteIcon/>} 
-            text="delete"
+            text="Delete"
           />
         </span>
       </div>

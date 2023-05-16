@@ -17,8 +17,8 @@ export const fakeAuth = ({ email, password }) =>
           error: "Invalid email or password.",
         });
       }
-    }, 2000);
-  });
+    });
+  }, 1000);
 
 export const fakeTokenVerify = (token) =>
   new Promise((resolve) => {
@@ -37,7 +37,7 @@ export const fakeTokenVerify = (token) =>
           error: "Invalid Token",
         });
       }
-    }, 2000);
+    });
   });
 
 export const fakeBooks = (token) =>
@@ -52,10 +52,10 @@ export const fakeBooks = (token) =>
       } catch (e) {
         resolve({ success: false, error: e });
       }
-    }, 2000);
+    });
   });
 
-export const fakeBookBorrow = (token, user) =>
+export const fakeBookBorrow = (token) =>
   new Promise((resolve) => {
     setTimeout(async () => {
       const response = await fakeTokenVerify(token);
@@ -68,5 +68,5 @@ export const fakeBookBorrow = (token, user) =>
       } catch (e) {
         resolve({ success: false, error: e });
       }
-    }, 2000);
+    });
   });

@@ -27,7 +27,7 @@ export default  function SideBar() {
        flex flex-col justify-between">
         <nav className="flex flex-col space-y-8 ">
           <NavLink 
-            className={({ isActive}) => isActive ? "active" : "" } 
+            className={({ isActive}) => isActive ? "activePage" : "" } 
             to='/'>
             <div className="flex space-x-3 pl-6">
                 <HouseIcon/>
@@ -35,7 +35,7 @@ export default  function SideBar() {
             </div>
           </NavLink>
           <NavLink 
-            className={({ isActive}) => isActive ? "active" : "" } 
+            className={({ isActive}) => isActive ? "activePage" : "" } 
             to='/books'>
             <div className="flex space-x-3 pl-6">
                 <BooksIcon/>
@@ -43,7 +43,7 @@ export default  function SideBar() {
             </div>
           </NavLink>
           <NavLink 
-              className={({ isActive}) => isActive ? "active" : "" } 
+              className={({ isActive}) => isActive ? "activePage" : "" } 
               to='/students'>
             <div className="flex space-x-3 pl-6">
                 <StudentIcon className="ng-primary"/>

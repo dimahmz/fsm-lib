@@ -1,0 +1,25 @@
+.stats-wrapper {
+  @apply bg-white rounded mx-6 py-4 px-8 w-60;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.stats-wrapper .stats {
+  @apply flex flex-col space-y-3;
+}
+.stats-wrapper .stats div {
+  @apply flex justify-between;
+}
+.stats-wrapper .stats .stat-number {
+  color: var(--app-primary-color);
+  @apply font-medium text-base;
+}
+.stats-wrapper .title {
+  @apply mb-3 pb-2 text-center font-medium;
+}
+
+.stat-title {
+  @apply relative;
+}
+.stats-wrapper .stat-title::after {
+  content: "";
+  @apply absolute -left-4 top-1/2 -translate-y-1/2 w-2 bg-black h-2 rounded-full;
+}

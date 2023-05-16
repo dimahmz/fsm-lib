@@ -1,12 +1,23 @@
 import { useState } from 'react'
 import './Pagination.css'
+import { NavLink } from 'react-router-dom'
 
-export default function Pagination({length, page}){
-  const pages=7
+export default function Pagination({length, page, pages }){
 
-  const [activeIndex, setPageIndex] = useState(1)
+  if(!page) page=1
 
-  const [pagesTab, setPagesTab] =useState([1,2,3,4,5])
+  let paginationPages = [1,2,3,4,5]
+
+  if(pages < 5) {
+    paginationPages = [];
+    for (let i = 1; i <= pages; i++) 
+    paginationPages.push(i)
+
+  }
+  const [activeIndex, setPageIndex] = useState(page)
+
+  const [pagesTab, setPagesTab] = useState(paginationPages)
+
 
   const selectPage = (i) =>{
       setPageIndex(i)
@@ -39,7 +50,7 @@ export default function Pagination({length, page}){
     if( lastIndex - 5 > 0 ) {
       for (let i = 1; i <= 5 ; i++) {
         if(lastIndex - (i+4) <= 0) break
-        newPagesTab.push(lastIndex - (i+4))
+        newPagesTab.unshift(lastIndex - (i+4))
       }
       setPagesTab([...newPagesTab])
       return
@@ -47,22 +58,23 @@ export default function Pagination({length, page}){
 
   }
 
-
   return(
-    <div className='pl-4 flex-center space-x-2'>
+    <div className={`pl-4 flex-center space-x-2 ${ pagesTab.length === 1 ? 'hidePagination' : ''}`}>
       <button 
         className='previous-page-btn'
         onClick={previousPage}
       > Prev </button>
       {
          pagesTab.map((pageIndex , i) => (
-           <button
-            key={i}
-            className={`page-number-btn ${(pageIndex) === activeIndex ? "activeBtn" : ""}`}
-            onClick={() => selectPage(pageIndex)}
-            >  
-              {pageIndex}            
-            </button>))
+          <NavLink key={i} to={`/books/?page=${pageIndex}`}>
+            <button
+              className={`page-number-btn ${(pageIndex) === activeIndex ? "activeBtn" : ""}`}
+              onClick={() => selectPage(pageIndex)}
+              >  
+                {pageIndex}    
+
+            </button>
+          </NavLink>))
       }
       <button 
         className='next-page-btn'
