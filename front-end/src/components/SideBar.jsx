@@ -20,7 +20,6 @@ export default  function SideBar() {
       navigate('/login') 
     }
 
-    
   return (
     <>      
       <aside className="fixed inset-0 py-14 bg-primary h-screen w-48 text-white
@@ -60,7 +59,7 @@ export default  function SideBar() {
           </button>
         </nav>
       </aside>
-      <main className="ml-48">
+      <main className="ml-48 overflow-auto">
         { ( navigation.state != "submitting" && navigation.state === "loading") && <Loading/> }
         <Outlet />
       </main>

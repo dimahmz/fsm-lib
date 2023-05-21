@@ -23,8 +23,8 @@ export const Login = () => {
         <Form className='flex-center mt-5' method='post' replace> 
           <div>
             <div className="input-container">
-              <input   name="email"/>
-              <label>Enter email : </label>
+              <input   name="username"/>
+              <label>Librarian's name : </label>
             </div>
             <div className="input-container">
               <input type="password" name="password" />
@@ -50,17 +50,19 @@ export const LoginLoader = async ({request}) => {
 
 export async function action ({request})  {
   const formData = await request.formData()
-  const email = formData.get("email")
+  const username = formData.get("username")
   const password = formData.get("password")
 
   // handel login function
   try{
-     const response = await fakeAuth({email , password})
+    //  const {data} = await axios.post('/serverip/login/',{username , password})
+    //  const { token, success } = data
+     const response = await  fakeAuth({username,password})
       if (response.success){
         if(!getCookie('token'))
           setCookie('token', response.user.token, 100)
         sessionStorage.setItem('authenticated', true)
-        return redirect('/')
+        return null
       }
       else{
         sessionStorage.setItem('authenticated', false)
@@ -68,9 +70,9 @@ export async function action ({request})  {
       }
     } catch(e){
       sessionStorage.setItem('authenticated', false)
-      return e.message
+      console.log(e)
+      const error = e?.response?.data?.error
+      if(error) return   error  
+      return  "server error !"
     }
-}
-
-
-
+  }

@@ -1,10 +1,13 @@
 import { useNavigate } from 'react-router-dom'
 import {ReactComponent as  LessThan } from '../assets/icons/lessThan.svg'
 
-export default function BackBtn(){
+export default function BackBtn({page}){
   const history = useNavigate()
 
   const navigateBack = () =>{
+    if(page){
+      history(page)
+    }
     history(-1)
   }
   return(

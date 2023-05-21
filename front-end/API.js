@@ -1,11 +1,13 @@
-export const fakeAuth = ({ email, password }) =>
+import axios from "axios";
+
+export const fakeAuth = ({ username, password }) =>
   new Promise((resolve) => {
     setTimeout(() => {
-      if (email === "hamza" && password === "hamza") {
+      if (username == "test" && password == "test1234") {
         resolve({
           success: true,
           user: {
-            token: "222",
+            token: "708401a1a0d854d97ec26189a9d8a4016e0e0117",
             id: 1,
             name: "John Doe",
             email: "user@example.com",
@@ -23,11 +25,11 @@ export const fakeAuth = ({ email, password }) =>
 export const fakeTokenVerify = (token) =>
   new Promise((resolve) => {
     setTimeout(() => {
-      if (token == "222") {
+      if (token == "708401a1a0d854d97ec26189a9d8a4016e0e0117") {
         resolve({
           success: true,
           user: {
-            name: "John Doe",
+            name: "Admin admin",
             email: "user@example.com",
           },
         });

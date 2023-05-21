@@ -4,8 +4,7 @@ import Button from './AppButton'
 import './AppModal.css'
 
 
-export default function DeleteModal({ onClose , name}){
-
+export default function DeleteModal({ onClose , name , action}){
   const closeModal = () => { onClose() }
 
   const closeModalOutside = (e) => { 
@@ -21,7 +20,7 @@ export default function DeleteModal({ onClose , name}){
         <p>Are you sure you wanna delete this {name} </p>
         <CloseIcon  onClick={closeModal}/>
       </header>
-        <Form method='post' action='destroy'>
+        <Form method='post' action={action}>
           <div className='mt-5 flex justify-end'>
             <Button text="Delete" type='submit'/>
           </div>

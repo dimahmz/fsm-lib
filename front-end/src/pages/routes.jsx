@@ -1,14 +1,16 @@
-import requireAuth from '../hooks/requireAuth'
 import { Route, createBrowserRouter,  createRoutesFromElements } from 'react-router-dom'
 import { Login, LoginLoader , action as LoginAction} from './Login'
 import SideBar from '../components/SideBar'
-import Dashboard, {rootAction} from './Dashboard'
-import Students from './Students'
+import Dashboard, { loadStats } from './Dashboard'
 import { Books, booksLoader } from './Books'
+import AddBook , { addAbookAction } from './AddBook'
 import OneBook , { bookLoader ,  deleteBook , receiveBook , borrowBook } from './OneBook'
+import Students ,{studentsLoader} from './Students'
+import OneStudent, {studentLoader , deleteStudent, updateStudent} from './OneStudent'
+import AddStudent, { addAstudent } from './AddStudent'
 import NoMatch from './NoMatch'
-import AddBook from './AddBook'
-import sleep from '../sleep'
+import requireAuth from '../hooks/requireAuth'
+// import sleep from '../sleep'
 
 
 const router = createBrowserRouter(createRoutesFromElements(
@@ -16,10 +18,10 @@ const router = createBrowserRouter(createRoutesFromElements(
   <Route path="/" 
     element={<SideBar />}
     loader={async () => await requireAuth()}
-    action={rootAction}>
+    >
     <Route index 
       element={<Dashboard />}     
-      loader={async () => {await sleep(1000); return null}}
+      loader={loadStats}
     />
     <Route 
       path="books" 
@@ -30,32 +32,46 @@ const router = createBrowserRouter(createRoutesFromElements(
         path="books/:id" 
         element={<OneBook />}
         loader={bookLoader}
-    >
+        >
       <Route 
         path="destroy" 
         action={deleteBook}
-        element={<h1>deleting</h1>}
+        errorElement={<div>Oops! There was an error.</div>}
       />
        <Route 
         path="receive" 
         action={receiveBook}
-        element={<h1>deleting</h1>}
       />
        <Route 
         path="borrow" 
         action={borrowBook}
-        element={<h1>deleting</h1>}
       />
     </Route>
     <Route 
         path="books/addabook" 
         element={<AddBook />}
+        action={addAbookAction}
       />
 
     <Route 
       path="students"
       element={<Students />} 
-      loader={async () => {await sleep(1000); return null}} 
+      loader={studentsLoader} 
+    />
+    <Route 
+      path="students/:id"
+      element={<OneStudent />} 
+      loader={studentLoader} 
+      action={updateStudent}
+    />
+    <Route 
+      path="students/:id/destroy"
+      loader={deleteStudent} 
+    />
+     <Route 
+      path="students/addastudent"
+      element={<AddStudent />} 
+      action={addAstudent}
     />
   </Route>
   <Route

@@ -1,18 +1,26 @@
 import { redirect } from "react-router-dom"
-import { fakeTokenVerify } from '../../API'
-import { getCookie } from './AppCookies'
+// import axios from "axios"
+import { getCookie } from "./AppCookies"
+import {fakeTokenVerify} from '../../API'
 
 export default async function RequireAuth() {
-  const token = getCookie('token')
   try{
-    const resp = await fakeTokenVerify(token)
-    if(!resp.success) {
+    const token = getCookie('token')
+    const response = await fakeTokenVerify(token)    
+    // const resp = await axios.get('/serverip/books/1',
+    // { 
+    //   headers: {
+    //     Authorization: token,
+    //   }
+    // })
+    if(!response.success) {
       sessionStorage.setItem("authenticated", false)
-      throw redirect('/login?message=you must login')
+        throw redirect('/login')
     }
   }
   catch(e){
-    return e
+    // if(!location.pathname == '/login') 
+    throw redirect('/login')
   }      
   sessionStorage.setItem("authenticated", true)
   return null 

@@ -1,7 +1,7 @@
-import { RouterProvider , useLocation} from 'react-router-dom'
+import { RouterProvider } from 'react-router-dom'
 import router  from './pages/routes.jsx'
-import { useEffect, useState } from 'react'
-import Loading from './components/Loading'
+// import { useEffect, useState } from 'react'
+// import Loading from './components/Loading'
 import './assets/styles/main.css'
 import './index.css'
 

@@ -1,5 +1,5 @@
 .stats-wrapper {
-  @apply bg-white rounded mx-6 py-4 px-8 w-60;
+  @apply bg-white rounded mx-24 py-3 px-8 w-60;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 .stats-wrapper .stats {

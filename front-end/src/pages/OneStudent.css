@@ -1,0 +1,18 @@
+.student-info-form {
+  @apply flex flex-col space-y-6;
+}
+.student-info-form label {
+  @apply w-28;
+}
+.student-info-form input {
+  display: block;
+  width: 390px;
+}
+
+.student-info-form div {
+  @apply flex space-x-10;
+}
+
+.delete-btn button {
+  @apply bg-red-500;
+}

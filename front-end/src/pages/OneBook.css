@@ -1,0 +1,7 @@
+.book-info {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  color: var(--small-fonts-color);
+}

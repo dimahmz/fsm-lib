@@ -21,3 +21,9 @@
 .font-display {
   font-family: var(--meduim-fonts-family);
 }
+.text-meduim-color {
+  color: var(--meduim-fonts-color);
+}
+.text-small-color {
+  color: var(--small-fonts-color);
+}

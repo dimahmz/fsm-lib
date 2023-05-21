@@ -1,0 +1,6 @@
+.inputs-wrapper div {
+  @apply flex flex-col space-y-3;
+}
+.inputs-wrapper input {
+  @apply max-w-sm ml-1;
+}

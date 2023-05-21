@@ -3,7 +3,7 @@ import Button from './AppButton'
 import './AppModal.css'
 
 
-export default function WarningModal({ onClose , BtnName}){
+export default function SuccessModal({ onClose ,toView , message}){
 
   const closeModal = () => { onClose() }
 
@@ -17,11 +17,13 @@ export default function WarningModal({ onClose , BtnName}){
   <div  className='modal-bg' onClick={closeModalOutside}>
     <section className='modal-content mt-40'>
       <header className='flex justify-between my-3'>
-        <p>An server error occurred. Please try again later</p>
+        <p>{message}</p>
         <CloseIcon  onClick={closeModal}/>
       </header>
-        { BtnName &&  <div className='mt-5 flex justify-end'> <Button text={BtnName} type='button'/></div>}
-      </section>
+          <div className='mt-5 flex justify-end'>
+            <Button text={`view ${toView}`} type='button'/>
+          </div>
+    </section>
   </div>
   )
 }
