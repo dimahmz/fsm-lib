@@ -111,7 +111,7 @@ def add_book_view(request):
         serializer.save()
         return Response({'success': True, 'book': serializer.data})
     else:
-        return Response({'success': False, 'error': serializer.errors})
+        return Response({'success': False, 'message': serializer.errors})
 
 
 @api_view(['DELETE'])
@@ -121,7 +121,7 @@ def delete_book_view(request, id):
         book.delete()
         return Response({'success': True, 'message': 'Book deleted successfully'})
     except Book.DoesNotExist:
-        return Response({'success': False, 'error': 'Book not found'}, status=404)
+        return Response({'success': False, 'message': 'Book not found'}, status=404)
 
 
 @api_view(['POST'])
@@ -131,6 +131,8 @@ def borrow_book_view(request):
     try:
         student = Student.objects.get(id=student_id)
         book = Book.objects.get(id=book_id)
+        if BorrowingRecord.objects.filter(student=student, book=book, return_date__isnull=True).exists():
+            return Response({'success': False, 'message': 'Student has already borrowed a copy of this book'}, status=400)
         if book.copies > 0:
             book.copies -= 1
             book.save()
@@ -144,20 +146,20 @@ def borrow_book_view(request):
             )
             return Response({'success': True, 'message': 'Book borrowed successfully'})
         else:
-            return Response({'success': False, 'error': 'No copies of this book are available'}, status=400)
+            return Response({'success': False, 'message': 'No copies of this book are available'}, status=400)
     except Student.DoesNotExist:
-        return Response({'success': False, 'error': 'Student not found'}, status=404)
+        return Response({'success': False, 'message': 'Student not found'}, status=404)
     except Book.DoesNotExist:
-        return Response({'success': False, 'error': 'Book not found'}, status=404)
+        return Response({'success': False, 'message': 'Book not found'}, status=404)
 
 
 @api_view(['POST'])
 def logout_view(request):
     try:
         request.user.auth_token.delete()
-        return Response({'message': 'Logged out successfully'})
+        return Response({'success': True,  'message': 'Logged out successfully'})
     except (AttributeError, ObjectDoesNotExist):
-        return Response({'error': 'Error logging out'}, status=400)
+        return Response({'success': False, 'message': 'Error logging out'}, status=400)
 
 
 @api_view(['GET'])
@@ -279,10 +281,10 @@ def return_book_view(request):
             borrowing_record.save()
             book.copies += 1
             book.save()
-            return Response({'message': 'Book returned successfully'})
+            return Response({'sucess': True, 'message': 'Book returned successfully'})
         else:
-            return Response({'error': 'No borrowing record found for this student and book'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'success': False, 'message': 'No borrowing record found for this student and book'}, status=status.HTTP_400_BAD_REQUEST)
     except Student.DoesNotExist:
-        return Response({'error': 'Student not found'}, status=status.HTTP_404_NOT_FOUND)
+        return Response({'success': False, 'message': 'Student not found'}, status=status.HTTP_404_NOT_FOUND)
     except Book.DoesNotExist:
-        return Response({'error': 'Book not found'}, status=status.HTTP_404_NOT_FOUND)
+        return Response({'success': False, 'message': 'Book not found'}, status=status.HTTP_404_NOT_FOUND)

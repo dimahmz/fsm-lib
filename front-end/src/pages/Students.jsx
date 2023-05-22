@@ -29,7 +29,6 @@ export async function studentsLoader({ request }){
     searchParameters+=`&id=${id}`
 
     
-
   if(searchParameters!='') searchParameters='?'+searchParameters
 
   // fetch the books from the back-end 
@@ -77,7 +76,7 @@ export async function studentsLoader({ request }){
               <input type="text" className="app-input h-8 w-20" name="last_name" />
             </div>   
             <div className="flex-center pt-5">
-              <button className="p-2 bg-primary" type="submit"> <SearchIcon /> </button>
+              <button className="p-2 bg-primary rounded-lg" type="submit"> <SearchIcon /> </button>
             </div>
           </div>       
       </Form>

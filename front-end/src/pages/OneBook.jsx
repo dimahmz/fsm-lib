@@ -11,7 +11,6 @@ import { ReactComponent as SendFileIcon } from '../assets/icons/sendFile.svg'
 import { useState } from 'react'
 import Loading from '../components/Loading'
 import './OneBook.css'
-import SLEEP from '../sleep.js'
 
 export async function bookLoader({params}){
   try{
@@ -51,17 +50,17 @@ export default function OneBook() {
   return (
     <>
       <span className="inline-block mt-8 ml-12 ">
-        <BackBtn />
+        <BackBtn page="/books"/>
       </span>
        {
-       !Book ? <div className='mt-10 mx-auto max-w-xl '>
+       !Book ? <div className='mt-10 mx-auto'>
                   <img src="../../public/bookNotFound.jpg" alt="image for a book not found" />
                 </div> : 
        <>
        <section className='book-info flex space-x-9 bg-white my-6 px-2 py-4 rounded-sm'>  
           <div>
             <img 
-              className=''
+              className='max-w-xs max-h-64'
               src={Book.cover_image ? Book.cover_image : '/noBookImg.png'} 
               alt="Book's cover image" 
             />
@@ -99,7 +98,7 @@ export default function OneBook() {
             text="Borrow book"
           />
         </span>
-        <span onClick={() => toggeleModal(0)}>
+        <span onClick={() => toggeleModal(1)}>
           <Button
             icon={<GetFileIcon/>} 
             text="Return book"
@@ -117,7 +116,7 @@ export default function OneBook() {
         <AppModal onClose={() => toggeleModal(0)} action='borrow'/> 
       } 
       { 
-        displayModals[0] &&
+        displayModals[1] &&
         <AppModal onClose={() => toggeleModal(1)} action='receive'/> } 
       {
          displayModals[2]  &&
@@ -151,20 +150,20 @@ export async function borrowBook({ request , params }) {
   const student_id = formData.get("student_id")
   try{
     const {data} = await axios.post("/serverip/borrow_book/", {student_id , "book_id" : params.id})  
+    console.log(data)
     window.alert(data.message)
-    return redirect(`/books`)
+    return redirect(`/books/${params.id}`)
   }
   catch(e){
-    const {response : {data } } = e 
-    if(!data.success)
-    window.alert(data.error)
-    else{
-      window.alert("A server Error please try again later!")
-      return  redirect(`/`)
+    const { response : { data } }    = e 
+    if(data){
+      window.alert(data.message)
+      return redirect(`/books/${params.id}`)
     }
-
-  }
-  return redirect(`/books/${params.id}`)
+    window.alert("A server Error please try again later!")
+    return  redirect(`/`)
+    }
+    
 }
 
 
@@ -175,17 +174,21 @@ export async function receiveBook({ request , params }) {
   try{
     const {data} = await axios.post("/serverip/return_book/", {student_id , "book_id" : params.id})  
     window.alert(data.message)
-    return redirect(`/books/${params.id}`)
+    if(data.success){
+      return redirect(`/books/${params.id}`)
+    }
+    return null
   }
   catch(e){
     const {response : {data } } = e 
-    if(!data.success)
-    window.alert(data.error)
+    if(data){
+      window.alert(data.message)
+      return redirect(`/books/${params.id}`)
+    }
     else{
       window.alert("A server Error please try again later!")
       return  redirect(`/`)
     }
   }
-  return redirect(`/books/${params.id}`)
 
 }

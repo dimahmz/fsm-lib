@@ -76,17 +76,11 @@ export default function Student(){
 
   return(
     <div className='overflow-auto'>
-      <div className='ml-8 mt-10'><BackBtn page="/students"/></div>
+      <div className='ml-8 my-10'><BackBtn page="/students"/></div>
     {
       !data.success ? <p className='mt-14 text-center text-3xl text-red-500'>{data.error}</p> :
       <>
       <div className="flex items-center space-x-28 md:space-x-40 ml-16 sm:justify-center">
-        <section className='w-72 text-center flex flex-col space-y-4'>
-          <p>Total books borrowed</p>
-          <p>12</p>
-          <p>Total Overdue books</p>
-          <p>12</p>          
-        </section>
         <Form className="pb-10 w-full" method="post">
           <div className='flex space-x-28'>
             <h1 className='font-semibold text-xl text-center'>Student&apos;s info </h1>

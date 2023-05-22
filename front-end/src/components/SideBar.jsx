@@ -24,7 +24,7 @@ export default  function SideBar() {
     <>      
       <aside className="fixed inset-0 py-14 bg-primary h-screen w-48 text-white
        flex flex-col justify-between">
-        <nav className="flex flex-col space-y-8 ">
+        <nav className="flex flex-col space-y-8 mt-7 ">
           <NavLink 
             className={({ isActive}) => isActive ? "activePage" : "" } 
             to='/'>

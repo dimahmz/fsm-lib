@@ -46,11 +46,11 @@ export function Books() {
   return (
     <>
       <Form role='search'>
-        <div className="flex items-center justify-around mt-6">
+        <div className="ml-24 flex items-center space-x-24 mt-10">
             <label htmlFor="title" hidden>search input</label>
             <input type="text" className="app-input h-8 w-72"  name="title"/>
             {/* onChange={(e)=> {submit(e.currentTarget.form)}} */}
-          <div className="flex-center space-x-2">
+          <div className="flex-center space-x-10">
           <div className="select-menu">
             <select className="py-2 px-3 " name="type">
               <option value="" defaultValue >Any</option>
@@ -59,7 +59,7 @@ export function Books() {
               <option value="chemistry">Chemistry</option>
             </select>
           </div>
-            <button className="p-2 bg-primary" type="submit"> <SearchIcon /> </button>
+            <button className="p-2 bg-primary rounded-lg" type="submit"> <SearchIcon /> </button>
           </div>
         </div>
       </Form>

@@ -1,4 +1,5 @@
 import { Form, redirect } from 'react-router-dom'
+import { useState } from 'react'
 import axios from '../../axios'
 import Line from '../components/Line'
 import Button from '../components/AppButton'
@@ -13,11 +14,11 @@ export async function addAbookAction({ request  }) {
     publisher =  formData.get("publisher"),
     language =  formData.get("language"),
     isbn_issn =  formData.get("isbn_issn"),
-    format =  formData.get("format")
-
+    format =  formData.get("format"),
+    cover_image = formData.get("cover_image")
     try{
       const { data }  = await  axios.post('/serverip/add_book/', 
-      [{title,author_name,book_type,publisher,language,isbn_issn,format}])
+      [{title,author_name,book_type,publisher,language,isbn_issn,format,cover_image}])
       if(data.success)
         return redirect(`/books/${data.book[0].id}`)
       else {
@@ -35,8 +36,6 @@ export async function addAbookAction({ request  }) {
 
 
 export default function AddBook(){
-
-  
   return(
     <>
       <div className='my-5 flex ml-20 space-x-32'>
@@ -44,7 +43,7 @@ export default function AddBook(){
         <h1 className=' font-semibold text-xl'>Add  a book </h1>
       </div>
       <Line/>
-      <Form className="inline-block pb-10" method="post">
+      <Form className="inline-block pb-10" method="post" encType="multipart/form-data">
         <div className='add-book-form grid grid-cols-2 gap-x-24 ml-28 mt-5 text-sm'>
           <div>
             <label htmlFor="title"> Title</label>
@@ -73,6 +72,10 @@ export default function AddBook(){
           <div>
             <label htmlFor="format"> Format </label>
             <input className="app-input" type='text' defaultValue="test" name='format' />
+          </div>
+          <div>
+            <label htmlFor="cover_image"> Image link</label>
+            <input  className="app-input" type="text" name="cover_image" />
           </div>
         </div>
           <div className="mt-10 ml-32">
